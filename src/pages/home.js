@@ -8,7 +8,7 @@ import { useAuth } from "utils/auth";
 import { useRouter } from 'next/router';
 
 
-function home() {
+function Home() {
  const [res,setres] = useState([])
  const [data, setData] = useState(null);
  const { logout,isAuthenticated } = useAuth();
@@ -110,4 +110,4 @@ console.log("tokrn",token);
   );
 }
 
-export default home;
+export default Home;
