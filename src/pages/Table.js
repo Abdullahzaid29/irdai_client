@@ -5,7 +5,7 @@ import axios from "axios";
 
 function Table() {
       // Similar to componentDidMount and componentDidUpdate:
-      const getdata = axios.get("https://irdac-server.onrender.com/api/fetchppm");
+      const getdata = axios.get("https://irdai-server.onrender.com/api/fetchppm");
       const [data,setData] = useState([])
       useEffect( () => {
       (  async function datas (){

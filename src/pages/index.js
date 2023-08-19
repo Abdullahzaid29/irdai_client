@@ -17,6 +17,7 @@ const { isAuthenticated } = useAuth();
   const [status, setstatus] = useState(false);
 
   const [forgetpasslink, setforgetpasslink] = useState('');
+ 
 
 
   const openModal = () => {
@@ -41,8 +42,24 @@ const { isAuthenticated } = useAuth();
     // setstatus(success)
     try {
 
-      await axios.post('https://irdac-server.onrender.com/api/signin',{   username:pusername,
-      password:ppassword}).then(res =>{
+      // await axios.post('https://irdac-server.onrender.com/api/signin',{   username:pusername,
+      // password:ppassword}
+    
+      // ).then(res =>{
+      //   console.log(res);
+      //   localStorage.setItem('token', res.data.token);
+       
+      // })
+      await axios({
+        method:"post",
+        url:'https://irdai-server.onrender.com/api/signin',
+        withCredentials:false,
+        data:{
+          username:pusername,
+      password:ppassword
+
+        }
+      }).then(res =>{
         console.log(res);
         localStorage.setItem('token', res.data.token);
        
