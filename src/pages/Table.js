@@ -1,10 +1,6 @@
 import React,{useEffect,useState} from 'react'
-
 import axios from "axios";
-
-
 function Table() {
-      // Similar to componentDidMount and componentDidUpdate:
       const getdata = axios.get("https://irdai-server.onrender.com/api/fetchppm");
       const [data,setData] = useState([])
       useEffect( () => {
@@ -17,7 +13,6 @@ function Table() {
                 const token = localStorage.getItem('token');
      console.log("token",token);
       getdata.then((response) => {
-        // console.log(response);
         setData(response.data)
       })
           } catch (err) {
@@ -28,11 +23,10 @@ function Table() {
         
         })();
       },[]);
-      console.log(data);
   return (
    <>
    
-<div className='px-20 py-20'>
+<div className='px-20 pt-40 pb-80'>
    <div className="relative overflow-x-auto shadow-2xl sm:rounded-lg py-10 px-10">
     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-white">
@@ -80,11 +74,11 @@ function Table() {
 
                     </td>
                     <td class="px-6 py-4">
-                    {item.ppm*3}
+                    {item.ppm}
 
                     </td>
                     <td class="px-6 py-4">
-                    {item.ppm*3>=1200?3000:''}
+                    {item.ppm>=350?1500:0}
                     </td>
                     <td class="px-6 py-4 text-right">
                         <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
@@ -93,57 +87,7 @@ function Table() {
                     </>
                    
                 )
-
             })}
-          
-            {/* <tr class="bg-white border-b hover:bg-gray-100">
-                <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
-                  TNXXADXXXX
-                </th>
-                <td class="px-6 py-4">
-                    Abdullah
-                </td>
-                <td class="px-6 py-4">
-                    KOTAK
-                </td>
-                <td class="px-6 py-4">
-                    9025650110
-                </td>
-                <td class="px-6 py-4">
-                2904
-                </td>
-                <td class="px-6 py-4">
-                    $1000
-                </td>
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white border-b hover:bg-gray-100">
-                <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
-                  TNXXADXXXX
-                </th>
-                <td class="px-6 py-4">
-                    Abdullah
-                </td>
-                <td class="px-6 py-4">
-                    KOTAK
-                </td>
-                <td class="px-6 py-4">
-                    9025650110
-                </td>
-                <td class="px-6 py-4">
-                2904
-                </td>
-                <td class="px-6 py-4">
-                    $1000
-                </td>
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr> */}
-      
-       
         </tbody>}
     
     </table>

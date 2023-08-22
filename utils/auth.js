@@ -1,4 +1,3 @@
-// utils/auth.js
 import { useState, useEffect } from 'react';
 
 const fakeAuthService = {
@@ -12,9 +11,6 @@ const fakeAuthService = {
     if (!token) {
       return false;
     }
-
-    // You can decode and verify the token here on the client side if needed
-    // For simplicity, we'll assume the token is valid
     return true;
   },
 };
