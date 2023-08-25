@@ -1,28 +1,46 @@
-import React,{useEffect,useState} from 'react'
+import React,{useEffect,useState,useCallback} from 'react'
 import axios from "axios";
 function Table() {
-      const getdata = axios.get("https://irdai-server.onrender.com/api/fetchppm");
+    //https://irdai-server.onrender.com
+      const getdata = axios.get("http://localhost:7000/api/fetchppm");
       const [data,setData] = useState([])
-      useEffect( () => {
-      (  async function datas (){
+    //   useEffect( () => {
+    //   (  async function datas (){
         
-        if (!data) {
-            return null;
-        } else {
-              try {
-                const token = localStorage.getItem('token');
-     console.log("token",token);
-      getdata.then((response) => {
-        setData(response.data)
-      })
-          } catch (err) {
-            console.log('pages auth in error');
-            console.log(err);
-          }
-        }
+    //     if (!data) {
+    //         return null;
+    //     } else {
+    //           try {
+    //             const token = localStorage.getItem('token');
+    //  console.log("token",token);
+    //   getdata.then((response) => {
+    //     setData(response.data)
+    //   })
+    //       } catch (err) {
+    //         console.log('pages auth in error');
+    //         console.log(err);
+    //       }
+    //     }
         
-        })();
-      },[]);
+    //     })();
+    //   },[]);
+    const func = useCallback(async ()=>{
+        try {
+            const token = localStorage.getItem('token');
+    console.log("token",token);
+    axios.get("http://localhost:7000/api/fetchppm").then((response) => {
+    setData(response.data)
+    })
+      } catch (err) {
+        console.log('pages auth in error');
+        console.log(err);
+      }
+    })
+      
+  useEffect(() => {
+  
+    func();
+  }, []);
   return (
    <>
    
@@ -46,6 +64,9 @@ function Table() {
                 <th scope="col" class="px-6 py-3">
                     PPM
                 </th>
+                {/* <th scope="col" class="px-6 py-3">
+                    Distraction
+                </th> */}
                 <th scope="col" class="px-6 py-3">
                  Annual Due
                 </th>
@@ -77,9 +98,13 @@ function Table() {
                     {item.ppm}
 
                     </td>
+                    {/* <td class="px-6 py-4">
+                    {item.distraction}
+                    </td> */}
                     <td class="px-6 py-4">
-                    {item.ppm>=350?1500:0}
+                    {1000+item.fine}
                     </td>
+                 
                     <td class="px-6 py-4 text-right">
                         <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                     </td>
