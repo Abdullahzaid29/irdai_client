@@ -2,7 +2,7 @@ import React,{useEffect,useState,useCallback} from 'react'
 import axios from "axios";
 function Table() {
     //https://irdai-server.onrender.com
-      const getdata = axios.get("http://localhost:7000/api/fetchppm");
+      const getdata = axios.get("https://irdai-server.onrender.com/api/fetchppm");
       const [data,setData] = useState([])
     //   useEffect( () => {
     //   (  async function datas (){
