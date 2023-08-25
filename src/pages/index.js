@@ -62,7 +62,7 @@ function Signin() {
   const forgot_password = async () => {
     try {
       await axios
-        .post("http://localhost:7000/api/forgotpassword", {
+        .post("https://irdai-server.onrender.com/api/forgotpassword", {
           username: pusername,
         })
         .then((res) => {
