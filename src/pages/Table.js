@@ -4,26 +4,9 @@ function Table() {
     //https://irdai-server.onrender.com
       const getdata = axios.get("https://irdai-server.onrender.com/api/fetchppm");
       const [data,setData] = useState([])
-    //   useEffect( () => {
-    //   (  async function datas (){
-        
-    //     if (!data) {
-    //         return null;
-    //     } else {
-    //           try {
-    //             const token = localStorage.getItem('token');
-    //  console.log("token",token);
-    //   getdata.then((response) => {
-    //     setData(response.data)
-    //   })
-    //       } catch (err) {
-    //         console.log('pages auth in error');
-    //         console.log(err);
-    //       }
-    //     }
-        
-    //     })();
-    //   },[]);
+      const [Credits,setCredits] = useState(0)
+
+ 
     const func = useCallback(async ()=>{
         try {
             const token = localStorage.getItem('token');
@@ -71,6 +54,9 @@ function Table() {
                  Annual Due
                 </th>
                 <th scope="col" class="px-6 py-3">
+                 Credits
+                </th>
+                <th scope="col" class="px-6 py-3">
                     <span class="sr-only">Edit</span>
                 </th>
             </tr>
@@ -104,10 +90,16 @@ function Table() {
                     <td class="px-6 py-4">
                     {1000+item.fine}
                     </td>
+                    <td class="px-6 py-4">
+                    {Credits}
+                    </td>
                  
                     <td class="px-6 py-4 text-right">
-                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
+                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded" 
+                    onClick={()=>{setCredits(1000)}}
+                    >
+  Update Credits
+</button>                          </td>
                   </tr>
                     </>
                    
