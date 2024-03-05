@@ -96,7 +96,7 @@ function Table() {
                  
                     <td class="px-6 py-4 text-right">
                     <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded" 
-                    onClick={()=>{setCredits(1000)}}
+                    onClick={()=>{setCredits(Credits+1000)}}
                     >
   Update Credits
 </button>                          </td>
