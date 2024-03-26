@@ -11,8 +11,10 @@ function Table() {
         try {
             const token = localStorage.getItem('token');
     console.log("token",token);
-    axios.get("https://irdai-server.onrender.com/api/fetchppm").then((response) => {
+    axios.get("http://localhost:7000/api/fetchppm").then((response) => {
     setData(response.data)
+    setCredits(response.data[0].user.rewards)
+    // console.log(response.data[0].user.rewards,'response');
     })
       } catch (err) {
         console.log('pages auth in error');
@@ -99,7 +101,8 @@ function Table() {
                     onClick={()=>{setCredits(Credits+1000)}}
                     >
   Update Credits
-</button>                          </td>
+</button>                
+          </td>
                   </tr>
                     </>
                    
